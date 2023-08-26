@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic button style</title>
+</head>
+<style>
+    * {
+        margin: 0% 0%;
+        padding: 0% 0%;
+    }
+
+    body {
+        background-color: rgb(196, 196, 196);
+    }
+
+    .main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
+        width: 400px;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 10px;
+    }
+
+    .main button {
+        position: relative;
+        cursor: pointer;
+        height: 50px;
+        width: 200px;
+        font-size: 30px;
+        font-weight: bold;
+        border: none;
+        background: none;
+        transition: all ease-in-out 0.2s;
+    }
+
+    .main button:hover {
+        color: white;
+    }
+
+    @keyframes fadeout{
+
+        100%{
+            opacity: 0.2;
+            transform: scale(0);
+        }
+
+        50%{
+            opacity: 0.7;
+        }
+
+        0%{
+            opacity: 1;
+        }
+
+    }
+
+    .main button::before,
+    .main button::after {
+        content: '';
+        position: absolute;
+        top: 0%;
+        bottom: 0%;
+        left: 0%;
+        right: 0%;
+        background-color: navy;
+        border-radius: 10px;
+        z-index: -1;
+        transform: scale(0);
+        transform-origin: top;
+        transition: transform ease-in-out 0.2s;
+    }
+
+    .main button:hover::before {
+        transform: scale(1);
+        transform-origin: bottom;
+        animation: fadeout ease-in-out 1s infinite;
+    }
+
+    .main button:hover::after {
+        transform: scale(1);
+        transform-origin: top;
+        animation: fadeout ease-in-out 1s infinite;
+    }
+
+
+</style>
+
+<body>
+    <div class="main">
+        <button>Click</button>
+    </div>
+</body>
+
+</html>
